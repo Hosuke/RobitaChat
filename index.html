@@ -126,7 +126,7 @@
             <input ng-model='name' type='text' id='nameInput' placeholder='enter a username...'>
         </div>
 
-        <ul>
+        <ul scroll-glue>
             <li ng-repeat='msg in messages' >
                 <strong class='example-chat-username'>{{msg.from}}</strong>
                 {{msg.body}}
@@ -153,8 +153,10 @@
     <script src="js/jquery.placeholder.js"></script>
     <script src="js/jquery.stacktable.js"></script>
 
+    <script src="https://rawgithub.com/Luegg/angularjs-scroll-glue/master/src/scrollglue.js"></script>
+
     <script>
-        var myApp = angular.module("myApp", ["firebase"]);
+        var myApp = angular.module("myApp", ["firebase", "luegg.directives"]);
 
         myApp.controller('MyController', ['$scope', '$firebase',
             function($scope, $firebase) {
