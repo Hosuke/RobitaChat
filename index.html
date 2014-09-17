@@ -127,7 +127,7 @@
         </div>
 
         <ul>
-            <li ng-repeat='msg in messages'>
+            <li ng-repeat='msg in messages.reverse()'>
                 <strong class='example-chat-username'>{{msg.from}}</strong>
                 {{msg.body}}
             </li>
