@@ -43,7 +43,7 @@
           border: 1px solid #CCC;
           overflow: auto;
           padding: 0px;
-          font-size: 18px;
+          /*font-size: 18px;*/
           line-height: 22px;
           color: #666; }
           .example-chat header {
@@ -59,19 +59,18 @@
             font-size: 12px;
             text-align: center;
             color: #999; }
+
           .example-chat input {
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
             -webkit-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2);
             box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2);
             border-radius: 3px;
             padding: 0px 10px;
-            height: 30px;
-            font-size: 18px;
+            /*height: 30px;*/
+            /*font-size: 18px;*/
             width: 100%;
-            font-weight: normal;
-            outline: none; }
+            /*font-weight: normal;
+            outline: none; */}
+
           .example-chat .example-chat-toolbar {
             background-color: #FFF;
             padding: 10px;
@@ -95,25 +94,41 @@
               .example-chat .example-chat-toolbar input:active, .example-chat .example-chat-toolbar input:focus {
                 color: #1d9dff;
                 border: 1px solid #FFF; }
-          .example-chat ul {
+          ul {
             list-style: none;
             margin: 0px;
             padding: 20px;
             height: 200px;
             overflow: auto; }
-            .example-chat ul li {
+          ul li {
               margin-bottom: 10px;
               line-height: 24px; }
-              .example-chat ul li:last-child {
+          ul li:last-child {
                 margin: 0px; }
-            .example-chat ul .example-chat-username {
+          ul .example-chat-username {
               margin-right: 10px; }
-          .example-chat footer {
+          footer {
             display: block;
             padding: 10px; }
             .example-chat footer input {
               border: 1px solid #ced3db;
               height: 40px; }
+          #prependedInput {
+            width:83%
+          }
+          .add-on {
+              width:15%
+          }
+          .input-prepend {
+              width:88%;
+              /*margin: auto;*/
+              padding: 1%;
+          }
+          #messageInput {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+          }
     </style>
 
   </head>
@@ -121,9 +136,11 @@
     <div class="example-chat container" ng-controller="MyController">
         <header>Robita Chat</header>
 
-        <div class='example-chat-toolbar'>
-            <label for='nameInput'>Username:</label>
-            <input ng-model='name' type='text' id='nameInput' placeholder='enter a username...'>
+        <div class="control-group large">
+            <div class="input-prepend">
+                <span class='add-on'>Username</span>
+                <input ng-model='name' class='span2' id="prependedInput" type="text" placeholder='enter a username...'>
+            </div>
         </div>
 
         <ul scroll-glue>
@@ -152,15 +169,18 @@
     <script src="js/jquery.tagsinput.js"></script>
     <script src="js/jquery.placeholder.js"></script>
     <script src="js/jquery.stacktable.js"></script>
+    <script src="js/application.js"></script>
 
     <script src="https://rawgithub.com/Luegg/angularjs-scroll-glue/master/src/scrollglue.js"></script>
 
     <script>
+
         var myApp = angular.module("myApp", ["firebase", "luegg.directives"]);
+
 
         myApp.controller('MyController', ['$scope', '$firebase',
             function($scope, $firebase) {
-                var ref = new Firebase("https://amber-torch-1305.firebaseio.com/");
+                var ref = new Firebase("https://amber-torch-1305.firebaseio.com/chat");
                 $scope.messages = $firebase(ref).$asArray();
 
                 //ADD MESSAGE METHOD
